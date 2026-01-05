@@ -1,5 +1,8 @@
 {
-  "generatedAt": "2026-01-05T07:16:51.359Z",
-  "websiteName": "Nông Sản Tây Nguyên Mr Táo",
-  "language": "Vietnamese (Tiếng Việt)"
+  "name": "Đặc Sản Tây Nguyên AI Builder",
+  "description": "Một nền tảng thương mại điện tử hiện đại dành cho nông sản Tây Nguyên với tông màu xanh lá và nâu gỗ, tích hợp chatbot AI và bảng điều khiển quản trị.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
 }
