@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Mr Táo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js" defer></script>
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-stone-900 text-stone-400 flex flex-col">
+            <div class="h-16 flex items-center justify-center border-b border-stone-800">
+                <span class="text-white text-xl font-bold">Mr Táo Admin</span>
+            </div>
+            <nav class="flex-1 py-6 space-y-2">
+                <a href="#" class="flex items-center px-6 py-3 bg-stone-800 text-white border-r-4 border-emerald-500">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                    Tổng quan
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 hover:bg-stone-800 hover:text-white transition">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                    Đơn hàng
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 hover:bg-stone-800 hover:text-white transition">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    Khách hàng
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto p-8">
+            <header class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-800">Dashboard</h2>
+                <div class="flex items-center gap-4">
+                    <span class="text-gray-600">Admin</span>
+                    <img src="https://ui-avatars.com/api/?name=Mr+Tao&background=059669&color=fff" class="w-10 h-10 rounded-full">
+                </div>
+            </header>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="text-gray-500 text-sm mb-1">Tổng doanh thu</div>
+                    <div class="text-3xl font-bold text-stone-900">125.000.000đ</div>
+                    <div class="text-emerald-500 text-sm mt-2 font-medium">+12% so với tháng trước</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="text-gray-500 text-sm mb-1">Đơn hàng mới</div>
+                    <div class="text-3xl font-bold text-stone-900">48</div>
+                    <div class="text-emerald-500 text-sm mt-2 font-medium">+5 đơn hôm nay</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="text-gray-500 text-sm mb-1">Sản phẩm tồn kho</div>
+                    <div class="text-3xl font-bold text-stone-900">1,204</div>
+                    <div class="text-amber-500 text-sm mt-2 font-medium">Cần nhập thêm Mắc ca</div>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                    <h3 class="font-bold text-gray-800">Đơn hàng gần đây</h3>
+                    <button class="text-sm text-emerald-600 font-medium hover:underline">Xem tất cả</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="bg-gray-50 text-gray-600 text-sm">
+                                <th class="px-6 py-3 font-medium">Mã ĐH</th>
+                                <th class="px-6 py-3 font-medium">Khách hàng</th>
+                                <th class="px-6 py-3 font-medium">Sản phẩm</th>
+                                <th class="px-6 py-3 font-medium">Tổng tiền</th>
+                                <th class="px-6 py-3 font-medium">Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 text-sm">#DH001</td>
+                                <td class="px-6 py-4 text-sm font-medium">Nguyễn Văn A</td>
+                                <td class="px-6 py-4 text-sm">1kg Mắc ca, 500g Cafe</td>
+                                <td class="px-6 py-4 text-sm">430.000đ</td>
+                                <td class="px-6 py-4"><span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-1 rounded-full font-bold">Hoàn thành</span></td>
+                            </tr>
+                             <tr>
+                                <td class="px-6 py-4 text-sm">#DH002</td>
+                                <td class="px-6 py-4 text-sm font-medium">Trần Thị B</td>
+                                <td class="px-6 py-4 text-sm">2kg Tiêu đen</td>
+                                <td class="px-6 py-4 text-sm">380.000đ</td>
+                                <td class="px-6 py-4"><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded-full font-bold">Đang giao</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

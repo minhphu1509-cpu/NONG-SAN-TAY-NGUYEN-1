@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm | Nông Sản Tây Nguyên Mr Táo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+
+     <!-- Minimal Nav -->
+    <nav class="bg-white border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-emerald-700">Mr Táo.</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-stone-500 hover:text-emerald-600">Trang chủ</a>
+                <a href="products.html" class="text-emerald-600 font-semibold">Cửa hàng</a>
+                <a href="contact.html" class="text-stone-500 hover:text-emerald-600">Liên hệ</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-amber-900 py-16 text-center text-white">
+        <h1 class="text-4xl font-bold mb-4">Cửa Hàng Nông Sản</h1>
+        <p class="text-amber-200">Chất lượng thượng hạng từ vùng đất Tây Nguyên</p>
+    </header>
+
+    <section class="py-16 max-w-7xl mx-auto px-4" x-data="{ category: 'all' }">
+        
+        <!-- Filters -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button @click="category = 'all'" :class="category === 'all' ? 'bg-emerald-600 text-white' : 'bg-white text-stone-600 hover:bg-stone-100'" class="px-6 py-2 rounded-full border border-stone-200 transition font-medium">Tất cả</button>
+            <button @click="category = 'cafe'" :class="category === 'cafe' ? 'bg-emerald-600 text-white' : 'bg-white text-stone-600 hover:bg-stone-100'" class="px-6 py-2 rounded-full border border-stone-200 transition font-medium">Cà Phê</button>
+            <button @click="category = 'hat'" :class="category === 'hat' ? 'bg-emerald-600 text-white' : 'bg-white text-stone-600 hover:bg-stone-100'" class="px-6 py-2 rounded-full border border-stone-200 transition font-medium">Hạt Dinh Dưỡng</button>
+            <button @click="category = 'traicay'" :class="category === 'traicay' ? 'bg-emerald-600 text-white' : 'bg-white text-stone-600 hover:bg-stone-100'" class="px-6 py-2 rounded-full border border-stone-200 transition font-medium">Trái Cây Sấy</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            
+            <!-- Product 1 -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group" x-show="category === 'all' || category === 'cafe'">
+                <div class="h-64 overflow-hidden relative">
+                     <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" alt="Cafe">
+                     <span class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">Bán chạy</span>
+                </div>
+                <div class="p-6">
+                    <div class="text-xs text-stone-500 mb-2">Cà phê</div>
+                    <h3 class="text-lg font-bold text-stone-900 mb-2">Cà phê Robusta Nguyên Chất</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="text-emerald-700 font-bold text-xl">180.000đ</span>
+                        <button class="w-8 h-8 rounded-full bg-stone-100 hover:bg-emerald-600 hover:text-white flex items-center justify-center transition">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group" x-show="category === 'all' || category === 'hat'">
+                 <div class="h-64 overflow-hidden relative">
+                     <img src="https://images.unsplash.com/photo-1526435942485-8dd2d4889c3b?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" alt="Macadamia">
+                </div>
+                <div class="p-6">
+                    <div class="text-xs text-stone-500 mb-2">Hạt dinh dưỡng</div>
+                    <h3 class="text-lg font-bold text-stone-900 mb-2">Mắc Ca Sấy Nứt Vỏ</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="text-emerald-700 font-bold text-xl">250.000đ</span>
+                        <button class="w-8 h-8 rounded-full bg-stone-100 hover:bg-emerald-600 hover:text-white flex items-center justify-center transition">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Product 3 -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group" x-show="category === 'all' || category === 'traicay'">
+                 <div class="h-64 overflow-hidden relative">
+                     <img src="https://images.unsplash.com/photo-1628151016142-b033d59c63f8?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" alt="Xoài sấy">
+                </div>
+                <div class="p-6">
+                    <div class="text-xs text-stone-500 mb-2">Trái cây sấy</div>
+                    <h3 class="text-lg font-bold text-stone-900 mb-2">Xoài Sấy Dẻo (500g)</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="text-emerald-700 font-bold text-xl">120.000đ</span>
+                        <button class="w-8 h-8 rounded-full bg-stone-100 hover:bg-emerald-600 hover:text-white flex items-center justify-center transition">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group" x-show="category === 'all' || category === 'hat'">
+                 <div class="h-64 overflow-hidden relative">
+                     <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" alt="Pepper">
+                </div>
+                <div class="p-6">
+                    <div class="text-xs text-stone-500 mb-2">Gia vị</div>
+                    <h3 class="text-lg font-bold text-stone-900 mb-2">Tiêu Đen Chư Sê</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="text-emerald-700 font-bold text-xl">190.000đ</span>
+                        <button class="w-8 h-8 rounded-full bg-stone-100 hover:bg-emerald-600 hover:text-white flex items-center justify-center transition">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-stone-900 text-stone-400 py-8 text-center">
+        <p>&copy; 2023 Mr Táo Nông Sản Tây Nguyên.</p>
+    </footer>
+</body>
+</html>
