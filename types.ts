@@ -2,10 +2,10 @@
 export interface Product {
   id: string;
   name: string;
-  price: number;
   category: string;
-  image: string;
+  price: number;
   description: string;
+  image: string;
   unit: string;
 }
 
@@ -13,33 +13,70 @@ export interface CartItem extends Product {
   quantity: number;
 }
 
-export interface ShippingAddress {
-  fullName: string;
+export interface Order {
+  id: string;
+  customerName: string;
   phone: string;
-  province: string;
-  district: string;
-  ward: string;
-  street: string;
+  address: string;
+  items: CartItem[];
+  total: number;
+  status: 'pending' | 'confirmed' | 'shipping' | 'completed';
+  date: string;
+  paymentMethod: string;
+  bankAccountNumber?: string;
 }
 
-export interface Blog {
+export interface BlogPost {
   id: string;
   title: string;
   excerpt: string;
   date: string;
-  image: string;
   author: string;
+  image: string;
 }
 
-export interface NavItem {
-  label: string;
-  path: string;
+export interface FAQItem {
+  question: string;
+  answer: string;
 }
 
-export interface Testimonial {
-  id: string;
+export interface TeamMember {
   name: string;
   role: string;
-  content: string;
-  avatar: string;
+  image: string;
+  bio: string;
+}
+
+export interface PortfolioItem {
+  id: string;
+  url: string;
+  title: string;
+  cat: string;
+}
+
+export interface Promotion {
+  id: string;
+  title: string;
+  description: string;
+  discount: string;
+  startDate: string;
+  endDate: string;
+  isActive: boolean;
+}
+
+export enum Page {
+  Home = 'home',
+  About = 'about',
+  Products = 'products',
+  Services = 'services',
+  Portfolio = 'portfolio',
+  Pricing = 'pricing',
+  Blog = 'blog',
+  Contact = 'contact',
+  Admin = 'admin',
+  FAQ = 'faq',
+  Team = 'team',
+  Cart = 'cart',
+  Checkout = 'checkout',
+  OrderSuccess = 'order-success'
 }

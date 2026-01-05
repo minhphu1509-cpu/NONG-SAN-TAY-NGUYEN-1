@@ -1,70 +1,49 @@
 
-import React, { useState, createContext, useContext, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Header from './components/Header';
+import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
-import CartDrawer from './components/CartDrawer';
 import Home from './pages/Home';
 import Products from './pages/Products';
+import Contact from './pages/Contact';
 import Admin from './pages/Admin';
 import About from './pages/About';
-import Contact from './pages/Contact';
-import Services from './pages/Services';
 import Blog from './pages/Blog';
-import CartPage from './pages/CartPage';
+import Services from './pages/Services';
+import Portfolio from './pages/Portfolio';
+import Pricing from './pages/Pricing';
+import FAQ from './pages/FAQ';
+import Team from './pages/Team';
+import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import OrderSuccess from './pages/OrderSuccess';
-import ProductDetail from './pages/ProductDetail';
-import { Product, CartItem } from './types';
+import { Page, Product, BlogPost, FAQItem, TeamMember, CartItem, Order, PortfolioItem, Promotion } from './types';
+import { INITIAL_PRODUCTS, INITIAL_BLOG_POSTS, INITIAL_FAQS, INITIAL_TEAM, INITIAL_PORTFOLIO, INITIAL_PROMOTIONS } from './constants';
 
-interface CartContextType {
-  cart: CartItem[];
-  addToCart: (product: Product, quantity?: number) => void;
-  updateQuantity: (id: string, delta: number) => void;
-  removeFromCart: (id: string) => void;
-  clearCart: () => void;
-  isCartOpen: boolean;
-  setIsCartOpen: (open: boolean) => void;
-}
-
-export const CartContext = createContext<CartContextType | null>(null);
-
-export const useCart = () => {
-  const context = useContext(CartContext);
-  if (!context) throw new Error("useCart must be used within a CartProvider");
-  return context;
-};
-
-const AppContent: React.FC = () => {
-  const location = useLocation();
-  const isAdmin = location.pathname.startsWith('/admin');
+const App: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<Page>(Page.Home);
+  
+  // Data States
+  const [products, setProducts] = useState<Product[]>(INITIAL_PRODUCTS);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(INITIAL_BLOG_POSTS);
+  const [faqs, setFaqs] = useState<FAQItem[]>(INITIAL_FAQS);
+  const [team, setTeam] = useState<TeamMember[]>(INITIAL_TEAM);
+  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>(INITIAL_PORTFOLIO);
+  const [promotions, setPromotions] = useState<Promotion[]>(INITIAL_PROMOTIONS);
+  
+  // E-commerce States
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [orders, setOrders] = useState<Order[]>([]);
 
-  // Load cart from localStorage
-  useEffect(() => {
-    const savedCart = localStorage.getItem('tn_cart');
-    if (savedCart) setCart(JSON.parse(savedCart));
-  }, []);
-
-  // Save cart to localStorage
-  useEffect(() => {
-    localStorage.setItem('tn_cart', JSON.stringify(cart));
-  }, [cart]);
-
-  const addToCart = (product: Product, quantity: number = 1) => {
+  // Cart Logics
+  const addToCart = (product: Product) => {
     setCart(prev => {
       const existing = prev.find(item => item.id === product.id);
       if (existing) {
-        return prev.map(item => item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item);
+        return prev.map(item => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item);
       }
-      return [...prev, { ...product, quantity }];
+      return [...prev, { ...product, quantity: 1 }];
     });
-    // Chỉ mở drawer nếu không phải trang cart hoặc checkout
-    if (!['/cart', '/checkout'].includes(location.pathname)) {
-      setIsCartOpen(true);
-    }
   };
 
   const updateQuantity = (id: string, delta: number) => {
@@ -83,38 +62,63 @@ const AppContent: React.FC = () => {
 
   const clearCart = () => setCart([]);
 
-  return (
-    <CartContext.Provider value={{ cart, addToCart, updateQuantity, removeFromCart, clearCart, isCartOpen, setIsCartOpen }}>
-      <div className="min-h-screen flex flex-col">
-        {!isAdmin && <Header />}
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/order-success" element={<OrderSuccess />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/admin" element={<Admin />} />
-          </Routes>
-        </main>
-        {!isAdmin && <Footer />}
-        {!isAdmin && <Chatbot />}
-        {!isAdmin && <CartDrawer />}
-      </div>
-    </CartContext.Provider>
-  );
-};
+  const renderPage = () => {
+    switch (currentPage) {
+      case Page.Home:
+        return <Home onPageChange={setCurrentPage} products={products} addToCart={addToCart} promotions={promotions} />;
+      case Page.Products:
+        return <Products onPageChange={setCurrentPage} products={products} addToCart={addToCart} />;
+      case Page.Cart:
+        return <Cart cart={cart} updateQuantity={updateQuantity} removeFromCart={removeFromCart} onPageChange={setCurrentPage} />;
+      case Page.Checkout:
+        return <Checkout cart={cart} onPageChange={setCurrentPage} setOrders={setOrders} clearCart={clearCart} />;
+      case Page.OrderSuccess:
+        return <OrderSuccess onPageChange={setCurrentPage} />;
+      case Page.Admin:
+        return (
+          <Admin 
+            products={products} setProducts={setProducts}
+            blogPosts={blogPosts} setBlogPosts={setBlogPosts}
+            faqs={faqs} setFaqs={setFaqs}
+            team={team} setTeam={setTeam}
+            orders={orders} setOrders={setOrders}
+            portfolioItems={portfolioItems} setPortfolioItems={setPortfolioItems}
+            promotions={promotions} setPromotions={setPromotions}
+          />
+        );
+      case Page.About: return <About />;
+      case Page.Blog: return <Blog blogPosts={blogPosts} />;
+      case Page.Services: return <Services />;
+      case Page.Portfolio: return <Portfolio portfolioItems={portfolioItems} />;
+      case Page.Pricing: return <Pricing onPageChange={setCurrentPage} />;
+      case Page.FAQ: return <FAQ faqs={faqs} />;
+      case Page.Team: return <Team team={team} />;
+      case Page.Contact: return <Contact />;
+      default: return <Home onPageChange={setCurrentPage} products={products} addToCart={addToCart} promotions={promotions} />;
+    }
+  };
 
-const App: React.FC = () => {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <div className="min-h-screen flex flex-col font-sans selection:bg-green-100 selection:text-green-900 bg-stone-50">
+      <Navbar 
+        currentPage={currentPage} 
+        onPageChange={(p) => {
+          setCurrentPage(p);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }} 
+        cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)}
+      />
+      <main className="flex-grow">
+        {renderPage()}
+      </main>
+      <Footer onPageChange={setCurrentPage} />
+      <Chatbot />
+      
+      {/* Decorative BG Pattern */}
+      <div className="fixed top-0 left-0 -z-10 w-full h-full pointer-events-none opacity-[0.02]">
+        <svg width="100%" height="100%"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#166534"/></pattern></defs><rect width="100%" height="100%" fill="url(#dots)" /></svg>
+      </div>
+    </div>
   );
 };
 

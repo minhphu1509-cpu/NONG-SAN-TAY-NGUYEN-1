@@ -1,8 +1,7 @@
 {
-  "name": "Đặc Sản Tây Nguyên AI Builder",
-  "description": "Một nền tảng thương mại điện tử hiện đại dành cho nông sản Tây Nguyên với tông màu xanh lá và nâu gỗ, tích hợp chatbot AI và bảng điều khiển quản trị.",
+  "name": "Copy of Nông Sản Tây Nguyên Mr Táo",
+  "description": "Website chuyên cung cấp nông sản sạch từ vùng đất Tây Nguyên đầy nắng gió. Phong cách hiện đại, tông màu xanh lá và nâu gỗ sang trọng.",
   "requestFramePermissions": [
-    "camera",
     "microphone"
   ]
 }

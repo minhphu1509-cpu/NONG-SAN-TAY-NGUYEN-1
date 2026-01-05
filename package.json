@@ -1,5 +1,5 @@
 {
-  "name": "đặc-sản-tây-nguyên-ai-builder",
+  "name": "copy-of-nông-sản-tây-nguyên-mr-táo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,11 +11,7 @@
   "dependencies": {
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "@google/genai": "^1.34.0",
-    "react-router-dom": "^7.11.0",
-    "lucide-react": "^0.562.0",
-    "recharts": "^3.6.0",
-    "framer-motion": "^11.11.17"
+    "@google/genai": "^1.34.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
