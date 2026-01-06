@@ -1,24 +1,24 @@
 
 import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Chatbot from './components/Chatbot';
-import Home from './pages/Home';
-import Products from './pages/Products';
-import Contact from './pages/Contact';
-import Admin from './pages/Admin';
-import About from './pages/About';
-import Blog from './pages/Blog';
-import Services from './pages/Services';
-import Portfolio from './pages/Portfolio';
-import Pricing from './pages/Pricing';
-import FAQ from './pages/FAQ';
-import Team from './pages/Team';
-import Cart from './pages/Cart';
-import Checkout from './pages/Checkout';
-import OrderSuccess from './pages/OrderSuccess';
-import { Page, Product, BlogPost, FAQItem, TeamMember, CartItem, Order, PortfolioItem, Promotion } from './types';
-import { INITIAL_PRODUCTS, INITIAL_BLOG_POSTS, INITIAL_FAQS, INITIAL_TEAM, INITIAL_PORTFOLIO, INITIAL_PROMOTIONS } from './constants';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import Chatbot from '@/components/Chatbot';
+import Home from '@/pages/Home';
+import Products from '@/pages/Products';
+import Contact from '@/pages/Contact';
+import Admin from '@/pages/Admin';
+import About from '@/pages/About';
+import Blog from '@/pages/Blog';
+import Services from '@/pages/Services';
+import Portfolio from '@/pages/Portfolio';
+import Pricing from '@/pages/Pricing';
+import FAQ from '@/pages/FAQ';
+import Team from '@/pages/Team';
+import Cart from '@/pages/Cart';
+import Checkout from '@/pages/Checkout';
+import OrderSuccess from '@/pages/OrderSuccess';
+import { Page, Product, BlogPost, FAQItem, TeamMember, CartItem, Order, PortfolioItem, Promotion } from '@/types';
+import { INITIAL_PRODUCTS, INITIAL_BLOG_POSTS, INITIAL_FAQS, INITIAL_TEAM, INITIAL_PORTFOLIO, INITIAL_PROMOTIONS } from '@/constants';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>(Page.Home);

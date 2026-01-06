@@ -1,5 +1,5 @@
 
-import { Product, BlogPost, Page, FAQItem, TeamMember, PortfolioItem, Promotion } from './types';
+import { Product, BlogPost, Page, FAQItem, TeamMember, PortfolioItem, Promotion } from '@/types';
 
 export const APP_NAME = "Mr Táo - Nông Sản Tây Nguyên";
 
