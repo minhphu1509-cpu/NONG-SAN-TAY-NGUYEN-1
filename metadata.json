@@ -1,7 +1,9 @@
+
 {
-  "name": "Copy of Nông Sản Tây Nguyên Mr Táo",
-  "description": "Website chuyên cung cấp nông sản sạch từ vùng đất Tây Nguyên đầy nắng gió. Phong cách hiện đại, tông màu xanh lá và nâu gỗ sang trọng.",
+  "name": "Mr Táo - Tinh Hoa Tây Nguyên",
+  "description": "Website thương mại điện tử đặc sản Tây Nguyên cao cấp, tích hợp trợ lý AI thông minh.",
   "requestFramePermissions": [
-    "microphone"
+    "camera",
+    "geolocation"
   ]
 }

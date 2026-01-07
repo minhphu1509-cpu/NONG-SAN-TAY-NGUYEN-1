@@ -1,26 +1,22 @@
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'url'; // Import để hỗ trợ xử lý đường dẫn trong ES Modules
 import { defineConfig, loadEnv } from 'vite';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 import react from '@vitejs/plugin-react';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url)); // Khai báo __dirname cho môi trường ESM
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
       server: {
         port: 3000,
-        host: '0.0.0.0',
+        host: env.VITE_HOST || '0.0.0.0', // Sử dụng biến môi trường để cấu hình host linh hoạt
       },
       plugins: [react()],
-      define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
+      // Đã loại bỏ define để bảo vệ API Key, tránh rò rỉ vào mã nguồn phía client
       resolve: {
         alias: {
-          '@': path.resolve(__dirname, '.'),
+          '@': path.resolve(__dirname, '.'), // Sử dụng __dirname đã khai báo để fix lỗi trên ESM
         }
       }
     };
