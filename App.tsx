@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Layout from './components/Layout';
+import AppLayout from './components/AppLayout';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
@@ -37,7 +37,7 @@ const App: React.FC = () => {
           <Route path="/admin" element={<Admin />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={
-            <Layout>
+            <AppLayout>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/products" element={<Products />} />
@@ -53,7 +53,7 @@ const App: React.FC = () => {
                 <Route path="/shopping-guide" element={<ShoppingGuide />} />
                 <Route path="/payment-policy" element={<PaymentPolicy />} />
               </Routes>
-            </Layout>
+            </AppLayout>
           } />
         </Routes>
       </Router>
