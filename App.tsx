@@ -1,12 +1,13 @@
+
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'; // Chuyển sang BrowserRouter để tối ưu SEO và thân thiện với URL
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import Admin from './pages/Admin'; // Giữ nguyên đường dẫn import Admin chính xác
+import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Checkout from './pages/Checkout';

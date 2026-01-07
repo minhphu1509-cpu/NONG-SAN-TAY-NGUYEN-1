@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
   <head>
@@ -9,26 +10,84 @@
     <meta property="og:description" content="Nông sản sạch từ đại ngàn Tây Nguyên - Giao hàng toàn quốc." />
     <meta property="og:type" content="website" />
     
-    <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- // Preconnect để giảm độ trễ tải tài nguyên bên ngoài -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="/index.css"> <!-- // Chuyển link CSS lên trên cùng của head để tối ưu hóa Critical Rendering Path -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                brown: '#3E2723',
+                green: '#1B5E20',
+                light: '#FDFCF0',
+                accent: '#EF6C00',
+              },
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            animation: {
+              'slow-zoom': 'zoom 25s linear infinite',
+              'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'bounce-subtle': 'bounceSubtle 2s infinite',
+              'pulse-soft': 'pulseSoft 3s infinite',
+            },
+            keyframes: {
+              zoom: {
+                '0%, 100%': { transform: 'scale(1)' },
+                '50%': { transform: 'scale(1.15)' },
+              },
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(30px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              bounceSubtle: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              pulseSoft: {
+                '0%, 100%': { opacity: '1' },
+                '50%': { opacity: '0.7' },
+              }
+            },
+            boxShadow: {
+              'premium': '0 25px 50px -12px rgba(0, 0, 0, 0.08)',
+              'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.05)',
+            }
+          }
+        }
+      }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-    
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react/": "https://esm.sh/react@19.0.0/",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/": "https://esm.sh/react-dom@19.0.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@7.1.0?deps=react@19.0.0,react-dom@19.0.0",
+    "lucide-react": "https://esm.sh/lucide-react@0.469.0?deps=react@19.0.0",
+    "@google/genai": "https://esm.sh/@google/genai@1.34.0"
+  }
+}
+</script>
     <style>
-      :root { --brand-accent: #C88E14; } /* // Duy trì biến CSS để đồng bộ với mã màu thương hiệu */
-      * { margin: 0; padding: 0; box-sizing: border-box; } 
-      html { scroll-behavior: smooth; }
       body {
+        scroll-behavior: smooth;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
       .scrollbar-hide::-webkit-scrollbar {
-        display: none; 
+        display: none;
       }
     </style>
-  </head>
+  <link rel="stylesheet" href="/index.css">
+</head>
   <body class="bg-[#FAF9F6] text-stone-800 selection:bg-brand-accent selection:text-white">
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+    <script type="module" src="index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
 </html>
