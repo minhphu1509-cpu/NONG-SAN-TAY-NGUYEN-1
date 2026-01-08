@@ -1,151 +1,144 @@
 
-import { Product, Category, Review, BlogPost } from './types';
+import { Product, BlogPost, Page, FAQItem, TeamMember, PortfolioItem, Promotion } from '@/types';
 
-export const CATEGORIES: Category[] = [
-  { id: 'all', name: 'Tất cả', icon: 'LayoutGrid' },
-  { id: 'cafe', name: 'Cà phê Tây Nguyên', icon: 'Coffee' },
-  { id: 'hat', name: 'Hạt dinh dưỡng', icon: 'Nut' },
-  { id: 'matong', name: 'Mật ong rừng', icon: 'Droplets' },
-  { id: 'giavi', name: 'Tiêu & Gia vị', icon: 'Sprout' },
+export const APP_NAME = "Mr Táo - Nông Sản Tây Nguyên";
+
+export const COLORS = {
+  primary: "#166534",
+  secondary: "#78350f",
+  accent: "#f59e0b",
+  bg: "#fdfcfb"
+};
+
+export const NAV_ITEMS = [
+  { label: "Trang chủ", page: Page.Home },
+  { label: "Sản phẩm", page: Page.Products },
+  { label: "Dịch vụ", page: Page.Services },
+  { label: "Blog", page: Page.Blog },
+  { label: "Hình ảnh", page: Page.Portfolio },
+  { label: "Hỏi đáp", page: Page.FAQ },
+  { label: "Liên hệ", page: Page.Contact }
 ];
 
-export const PRODUCTS: Product[] = [
+export const INITIAL_PRODUCTS: Product[] = [
   {
-    id: 1,
-    name: 'Cà phê Robusta Honey Thượng Hạng',
-    category: 'cafe',
-    price: 250000,
-    oldPrice: 300000,
-    image: 'https://picsum.photos/id/1060/800/800',
-    images: ['https://picsum.photos/id/1060/800/800'],
-    description: '100% hạt Robusta chín cây, sơ chế theo phương pháp Honey cho hương vị đậm đà, hậu ngọt sâu. Phù hợp pha phin truyền thống.',
-    rating: 5,
-    reviews: 124,
-    isBestSeller: true,
-    stockCount: 15,
+    id: "1",
+    name: "Cà Phê Robusta Honey Đắk Lắk",
+    category: "Cà Phê",
+    price: 285000,
+    description: "Hạt cà phê Robusta chế biến theo phương pháp Honey, mang lại vị ngọt hậu tự nhiên và hương thơm nồng nàn của hoa cà phê núi rừng.",
+    image: "https://images.unsplash.com/photo-1580915411954-282cb1b0d780?auto=format&fit=crop&q=80&w=1000",
+    unit: "Gói 500g"
   },
   {
-    id: 2,
-    name: 'Hạt Mắc Ca Lâm Đồng (Nứt vỏ)',
-    category: 'hat',
-    price: 320000,
-    oldPrice: 380000,
-    image: 'https://picsum.photos/id/1080/800/800',
-    images: ['https://picsum.photos/id/1080/800/800'],
-    description: 'Mắc ca size A+, hạt to đều, nứt vỏ tự nhiên. Giàu Omega 3-6-9, tốt cho tim mạch và trí não. Đóng gói hút chân không 500g.',
-    rating: 4.8,
-    reviews: 89,
-    isBestSeller: true,
-    stockCount: 0, // Out of Stock
-  },
-  {
-    id: 3,
-    name: 'Mật Ong Hoa Cà Phê Nguyên Chất',
-    category: 'matong',
-    price: 180000,
-    oldPrice: 220000,
-    image: 'https://picsum.photos/id/312/800/800',
-    images: ['https://picsum.photos/id/312/800/800'],
-    description: 'Mật ong được khai thác trực tiếp từ mùa hoa cà phê nở rộ tháng 3. Màu vàng sánh, hương thơm nhẹ, vị ngọt thanh không gắt.',
-    rating: 4.9,
-    reviews: 210,
-    isBestSeller: false,
-    stockCount: 42,
-  },
-  {
-    id: 4,
-    name: 'Tiêu Đen Chư Sê (Hạt Tiêu Sọ)',
-    category: 'giavi',
-    price: 150000,
-    image: 'https://picsum.photos/id/292/800/800',
-    images: ['https://picsum.photos/id/292/800/800'],
-    description: 'Hạt tiêu đen Chư Sê nổi tiếng, hạt chắc, cay nồng tự nhiên. Đã được sàng lọc kỹ, không hạt lép, không tạp chất.',
-    rating: 4.7,
-    reviews: 56,
-    isBestSeller: false,
-    stockCount: 10,
-  },
-  {
-    id: 5,
-    name: 'Cà phê Arabica Cầu Đất',
-    category: 'cafe',
+    id: "2",
+    name: "Hạt Mắc Ca VIP Loại 1",
+    category: "Hạt Dinh Dưỡng",
     price: 350000,
-    image: 'https://picsum.photos/id/425/800/800',
-    images: ['https://picsum.photos/id/425/800/800'],
-    description: 'Arabica Cầu Đất trứ danh với vị chua thanh quyến rũ, hương thơm nồng nàn. Dành cho người sành cà phê.',
-    rating: 5,
-    reviews: 78,
-    isBestSeller: true,
-    stockCount: 5,
+    description: "Hạt mắc ca tuyển chọn kích thước lớn, sấy lạnh giữ nguyên hàm lượng dinh dưỡng, giòn tan và béo ngậy.",
+    image: "https://images.unsplash.com/photo-1543233604-3b60995982a3?auto=format&fit=crop&q=80&w=1000",
+    unit: "Hộp 500g"
   },
   {
-    id: 6,
-    name: 'Muối Kiến Vàng Gia Lai',
-    category: 'giavi',
-    price: 85000,
-    image: 'https://picsum.photos/id/835/800/800',
-    images: ['https://picsum.photos/id/835/800/800'],
-    description: 'Đặc sản độc đáo của vùng chảo lửa Krông Pa. Vị chua thanh của kiến vàng kết hợp ớt hiểm cay xé lưỡi. Chấm bò một nắng là hết bài.',
-    rating: 4.5,
-    reviews: 32,
-    isBestSeller: false,
-    stockCount: 0, // Out of Stock
+    id: "3",
+    name: "Tiêu Đen Chín Cây Gia Lai",
+    category: "Gia Vị",
+    price: 180000,
+    description: "Hạt tiêu đen chín đỏ trên cây, phơi nắng tự nhiên, cay nồng đậm đà và mùi thơm cực kỳ đặc trưng.",
+    image: "https://images.unsplash.com/photo-1599940824399-b87987cb972d?auto=format&fit=crop&q=80&w=1000",
+    unit: "Gói 200g"
   },
+  {
+    id: "4",
+    name: "Mật Ong Rừng Nguyên Chất",
+    category: "Mật Ong",
+    price: 450000,
+    description: "Mật ong đa hoa khai thác trực tiếp từ rừng già, vị ngọt thanh, đặc quánh tự nhiên.",
+    image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80&w=1000",
+    unit: "Chai 750ml"
+  },
+  {
+    id: "5",
+    name: "Hạt Điều Rang Củi Bình Phước",
+    category: "Hạt Dinh Dưỡng",
+    price: 295000,
+    description: "Hạt điều vỏ lụa rang củi thủ công, giữ trọn vẹn độ béo thơm và vị mặn nhẹ của muối tinh khiết.",
+    image: "https://images.unsplash.com/photo-1536620239015-611b33937d57?auto=format&fit=crop&q=80&w=1000",
+    unit: "Hộp 500g"
+  },
+  {
+    id: "6",
+    name: "Trà Oolong Thượng Hạng",
+    category: "Trà",
+    price: 420000,
+    description: "Búp trà Oolong 1 tôm 2 lá từ cao nguyên Lâm Đồng, nước trà vàng xanh, hương thơm dịu nhẹ.",
+    image: "https://images.unsplash.com/photo-1563911191333-dc06371859f2?auto=format&fit=crop&q=80&w=1000",
+    unit: "Gói 250g"
+  }
 ];
 
-export const REVIEWS: Review[] = [
+export const INITIAL_BLOG_POSTS: BlogPost[] = [
   {
-    id: 1,
-    author: 'Nguyễn Văn A',
-    avatar: 'https://picsum.photos/id/1005/100/100',
-    rating: 5,
-    comment: 'Cà phê rất thơm, đúng chuẩn vị Tây Nguyên mình từng uống khi đi du lịch Buôn Ma Thuột. Đóng gói cẩn thận, giao hàng nhanh.',
+    id: "b1",
+    title: "5 Công dụng vàng của Hạt Mắc Ca cho mẹ bầu",
+    excerpt: "Hạt mắc ca được mệnh danh là nữ hoàng các loại hạt nhờ hàm lượng dinh dưỡng vượt trội giúp phát triển trí não cho bé...",
+    date: "2024-05-10",
+    author: "Mr Táo",
+    image: "https://images.unsplash.com/photo-1528751004148-73602167195c?auto=format&fit=crop&q=80&w=1000"
   },
   {
-    id: 2,
-    author: 'Trần Thị B',
-    avatar: 'https://picsum.photos/id/1011/100/100',
-    rating: 5,
-    comment: 'Mắc ca hạt to, giòn, không bị hôi dầu. Mua biếu bố mẹ rất ưng ý. Sẽ ủng hộ shop dài dài.',
-  },
-  {
-    id: 3,
-    author: 'Lê Hoàng C',
-    avatar: 'https://picsum.photos/id/1027/100/100',
-    rating: 4,
-    comment: 'Mật ong sánh mịn, test thử thấy chuẩn mật thật. Giá cả hợp lý so với chất lượng.',
-  },
+    id: "b2",
+    title: "Bí quyết pha ly cà phê Robusta chuẩn vị Tây Nguyên",
+    excerpt: "Nhiệt độ nước, kích thước bột và thời gian ủ là 3 yếu tố quyết định đến một ly cà phê đậm đà bản sắc núi rừng...",
+    date: "2024-05-15",
+    author: "Mr Táo",
+    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1000"
+  }
 ];
 
-export const BLOG_POSTS: BlogPost[] = [
+export const INITIAL_FAQS: FAQItem[] = [
   {
-    id: 1,
-    title: 'Cách pha cà phê phin ngon chuẩn vị người Pleiku',
-    category: 'recipe',
-    image: 'https://images.unsplash.com/photo-1610450821569-425333f20253?auto=format&fit=crop&w=800&q=80',
-    author: 'Mr Táo',
-    date: '2023-10-15',
-    summary: 'Bí quyết nằm ở nhiệt độ nước và cách ủ cà phê. Cùng Mr Táo tìm hiểu cách để có ly cà phê phin đậm đà vào mỗi sáng.',
-    content: 'Cà phê phin là nét văn hóa đặc trưng...'
+    question: "Sản phẩm Mr Táo có đạt chuẩn sạch không?",
+    answer: "Tất cả các dòng sản phẩm của chúng tôi đều đạt chứng nhận VietGAP và được kiểm định định kỳ về dư lượng thuốc bảo vệ thực vật."
   },
   {
-    id: 2,
-    title: 'Mùa hoa cà phê Tây Nguyên - Vẻ đẹp tinh khôi của núi rừng',
-    category: 'story',
-    image: 'https://images.unsplash.com/photo-1599940859674-a7fef05b94ae?auto=format&fit=crop&w=800&q=80',
-    author: 'H\'Hen',
-    date: '2023-03-20',
-    summary: 'Tháng 3, Tây Nguyên khoác lên mình màu áo trắng tinh khôi của hoa cà phê. Đây cũng là mùa ong đi lấy mật.',
-    content: 'Khi những cơn mưa đầu mùa tưới mát vùng đất bazan, cũng là lúc hoa cà phê bung nở trắng xóa cả một vùng trời...'
+    question: "Chính sách đại lý của Mr Táo như thế nào?",
+    answer: "Chúng tôi có chính sách chiết khấu linh hoạt từ 15-35% tùy sản lượng, đồng thời hỗ trợ thiết kế bao bì cho đối tác sỉ."
+  }
+];
+
+export const INITIAL_TEAM: TeamMember[] = [
+  {
+    name: "Lê Minh Táo",
+    role: "Founder & Master Roaster",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=600",
+    bio: "Hơn 15 năm gắn bó với cây cà phê, Mr Táo là người trực tiếp kiểm soát quy trình rang xay."
   },
   {
-    id: 3,
-    title: 'Phân biệt Mật ong rừng và Mật ong nuôi',
-    category: 'news',
-    image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=800&q=80',
-    author: 'Chuyên gia dinh dưỡng',
-    date: '2023-06-10',
-    summary: 'Làm sao để biết mật ong bạn mua có phải là mật ong rừng nguyên chất? Những mẹo nhỏ đơn giản giúp bạn phân biệt.',
-    content: 'Mật ong rừng thường có bọt khí nhiều hơn, mùi thơm nồng hơn và màu sắc thay đổi theo mùa hoa...'
-  },
+    name: "Nguyễn Thu Hà",
+    role: "Giám đốc Chất lượng",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=600",
+    bio: "Chuyên gia với bằng cấp quốc tế về thử nếm (Cupping), phụ trách khâu chọn lọc nguyên liệu."
+  }
+];
+
+export const INITIAL_PORTFOLIO: PortfolioItem[] = [
+  { id: "p1", url: "https://images.unsplash.com/photo-1500313830540-7b6650a74fd0?auto=format&fit=crop&q=80&w=800", title: "Cánh đồng cà phê", cat: "Nguồn nguyên liệu" },
+  { id: "p2", url: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=800", title: "Xử lý hạt cà phê", cat: "Sản xuất" },
+  { id: "p3", url: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=800", title: "Hạt Robusta thành phẩm", cat: "Sản phẩm" },
+  { id: "p4", url: "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?auto=format&fit=crop&q=80&w=800", title: "Phân loại mắc ca", cat: "Chế biến" },
+  { id: "p5", url: "https://images.unsplash.com/photo-1528751004148-73602167195c?auto=format&fit=crop&q=80&w=800", title: "Vùng đất Bazan", cat: "Thiên nhiên" },
+  { id: "p6", url: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80&w=800", title: "Khai thác mật ong", cat: "Khai thác" },
+];
+
+export const INITIAL_PROMOTIONS: Promotion[] = [
+  {
+    id: "promo1",
+    title: "Khai Trương Chi Nhánh Huế",
+    description: "Giảm ngay tất cả đơn hàng & Miễn phí vận chuyển nội thành",
+    discount: "10%",
+    startDate: "2026-01-01",
+    endDate: "2026-01-31",
+    isActive: true
+  }
 ];
