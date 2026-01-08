@@ -1,4 +1,4 @@
-import { fileURLToPath, URL } from 'node:url';
+import { resolve } from 'path';
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
       alias: {
-        '@': fileURLToPath(new URL('.', import.meta.url))
+        '@': resolve(process.cwd())
       }
     }
   };
