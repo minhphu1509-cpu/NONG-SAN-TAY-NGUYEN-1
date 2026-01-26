@@ -1,24 +1,24 @@
 
 import React, { useState } from 'react';
-import Navbar from '@/ui/Navbar';
-import Footer from '@/ui/Footer';
-import Chatbot from '@/ui/Chatbot';
-import Home from '@/pages/Home';
-import Products from '@/pages/Products';
-import Contact from '@/pages/Contact';
-import Admin from '@/pages/Admin';
-import About from '@/pages/About';
-import Blog from '@/pages/Blog';
-import Services from '@/pages/Services';
-import Portfolio from '@/pages/Portfolio';
-import Pricing from '@/pages/Pricing';
-import FAQ from '@/pages/FAQ';
-import Team from '@/pages/Team';
-import Cart from '@/pages/Cart';
-import Checkout from '@/pages/Checkout';
-import OrderSuccess from '@/pages/OrderSuccess';
-import { Page, Product, BlogPost, FAQItem, TeamMember, CartItem, Order, PortfolioItem, Promotion } from '@/types';
-import { INITIAL_PRODUCTS, INITIAL_BLOG_POSTS, INITIAL_FAQS, INITIAL_TEAM, INITIAL_PORTFOLIO, INITIAL_PROMOTIONS } from '@/constants';
+import Navbar from './ui/Navbar.tsx';
+import Footer from './ui/Footer.tsx';
+import Chatbot from './ui/Chatbot.tsx';
+import Home from './pages/Home.tsx';
+import Products from './pages/Products.tsx';
+import Contact from './pages/Contact.tsx';
+import Admin from './pages/Admin.tsx';
+import About from './pages/About.tsx';
+import Blog from './pages/Blog.tsx';
+import Services from './pages/Services.tsx';
+import Portfolio from './pages/Portfolio.tsx';
+import Pricing from './pages/Pricing.tsx';
+import FAQ from './pages/FAQ.tsx';
+import Team from './pages/Team.tsx';
+import Cart from './pages/Cart.tsx';
+import Checkout from './pages/Checkout.tsx';
+import OrderSuccess from './pages/OrderSuccess.tsx';
+import { Page, Product, BlogPost, FAQItem, TeamMember, CartItem, Order, PortfolioItem, Promotion } from './types';
+import { INITIAL_PRODUCTS, INITIAL_BLOG_POSTS, INITIAL_FAQS, INITIAL_TEAM, INITIAL_PORTFOLIO, INITIAL_PROMOTIONS } from './constants';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>(Page.Home);
